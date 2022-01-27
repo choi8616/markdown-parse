@@ -24,7 +24,7 @@ public class MarkdownParse {
     }
     public static void main(String[] args) throws IOException {
         if(args.length == 0) {
-            System.out.println("no argument");
+            System.out.println("print something");
             return;
         }
 		Path fileName = Path.of(args[0]);
