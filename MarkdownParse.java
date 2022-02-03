@@ -33,10 +33,10 @@ public class MarkdownParse {
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
-        if (args.length == 0) {
-            System.out.println("No Argument. Print something.");
-            return;
-        }
+        // if (args.length == 0) {
+        //     System.out.println("No Argument. Print something.");
+        //     return;
+        // }
 		Path fileName = Path.of(args[0]);
 	    String contents = Files.readString(fileName);
         //split contents into string array
