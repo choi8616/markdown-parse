@@ -12,7 +12,7 @@ public class MarkdownParse {
         int openParenCount = 1;
         while (openParenCount > 0) {
             if (markdown.charAt(closeParen) == '(') {
-                openParenCount++;
+                // openParenCount++;
             } else if (markdown.charAt(closeParen) == ')') {
                 openParenCount--;
             }
