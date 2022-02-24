@@ -1,6 +1,5 @@
-# Title
+# Image Link Included
 
-[a link!](https://something.com)
-[another link!](some-page.html)
+[CorrectLink] (www.google.com)
 
-some paragraph text after the links
+![ImageLink](someimage.jpg)

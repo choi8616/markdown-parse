@@ -27,7 +27,9 @@ public class MarkdownParse {
         // the next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
+            int nextImageLink = markdown.indexOf("!", currentIndex);
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
+<<<<<<< HEAD
             // System.out.format("%d\t%d\t%s\n", currentIndex, nextOpenBracket, toReturn);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
@@ -46,13 +48,36 @@ public class MarkdownParse {
             }
             else {
                 currentIndex = currentIndex + 1;
+=======
+            //we need to find a closing bracket following immediately by an opening paranthesis
+            int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
+            int openParen = markdown.indexOf("(", nextCloseBracket);
+            int closeParen = markdown.indexOf(")", openParen);
+            if (nextImageLink > -1 && nextImageLink == nextOpenBracket - 1) {
+                currentIndex = closeParen + 1;
+            }
+            else {
+                if (nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1) {
+                    currentIndex = closeParen + 1;
+                }
+                else {
+                    toReturn.add(markdown.substring(openParen + 1, closeParen));
+                    currentIndex = closeParen + 1;
+                }
+>>>>>>> bb3706fe5d685babc777fd9959b98b986485a9d8
             }
         }
         return toReturn;
     }
     public static void main(String[] args) throws IOException {
+        if (args.length == 0) {
+            System.out.println("No Argument. Print somethings.");
+            return;
+        }
 		Path fileName = Path.of(args[0]);
 	    String contents = Files.readString(fileName);
+        //split contents into string array
+        //for loop: for each content check for "](" and "https://"
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
     }
